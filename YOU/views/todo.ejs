@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=id%></title>
+    <link rel="stylesheet" href="/todostyle.css">
+    <link rel="stylesheet" href="/starsky.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+    <div id="star"></div>
+    <div id="twinkling"></div>
+    <div style="z-index: 4;">
+    <form action="/addtasks" method="post">
+        <input type="hidden" name="id" value='<%=id%>'>
+        <input placeholder="enter task to be added" class="taskadder" name="task">
+        <button type="submit" class="w3-button w3-xlarge w3-black">+</button>
+    </form>
+    
+    <div class="taskHolder">
+        <% console.log(result) %>
+        
+            <div class="scheduled set">
+            <% for (task of result) { %>
+            <% if (task.status == 0) { %>
+            <div class="task">
+                <input type="checkbox" class="check">
+                <p><%= task.Task %></p>
+            </div>
+            <% }} %>
+            </div>
+            <div class="done set">
+                <% for (task of result) { %>
+                <%if (task.status == 1) { %>
+                <div class="task">
+                    <input type="checkbox" class="check" checked="checked">
+                    <p><%= task.Task %></p>
+                </div><% } }%>
+            </div>
+            
+        
+    </div></div>
+    <!-- <script src="/backdrop.js"></script> -->
+    <script src="/tasks.js"></script>
+</body>
+</html>
